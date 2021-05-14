@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01_KomodoCafeChallengeConso
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01_KomodoCafeChallengeRepo", "01_KomodoCafeChallengeRepo\01_KomodoCafeChallengeRepo.csproj", "{C8827B27-C745-4F44-8D86-A39D5A668A97}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01_KomodoCafeChallengesTests", "KomodoCafeChallengesTests\01_KomodoCafeChallengesTests.csproj", "{DA1BFCCE-5AF3-45CA-A590-7B3613C7729B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{C8827B27-C745-4F44-8D86-A39D5A668A97}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C8827B27-C745-4F44-8D86-A39D5A668A97}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C8827B27-C745-4F44-8D86-A39D5A668A97}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DA1BFCCE-5AF3-45CA-A590-7B3613C7729B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA1BFCCE-5AF3-45CA-A590-7B3613C7729B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA1BFCCE-5AF3-45CA-A590-7B3613C7729B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA1BFCCE-5AF3-45CA-A590-7B3613C7729B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace _01_KomodoCafeChallengeConsole
 {
-    class ProgramUI
+    public class MenuItem
     {
     }
 }
