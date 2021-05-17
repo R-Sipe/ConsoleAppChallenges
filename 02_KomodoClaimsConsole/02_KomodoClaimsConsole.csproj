@@ -45,5 +45,11 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\02_KomodoClaimsRepo\02_KomodoClaimsRepo.csproj">
+      <Project>{95DAC2A8-FEF9-4759-93A3-3E4C9226EC9B}</Project>
+      <Name>02_KomodoClaimsRepo</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
