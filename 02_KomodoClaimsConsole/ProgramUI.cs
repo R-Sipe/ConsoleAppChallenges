@@ -89,7 +89,15 @@ namespace _02_KomodoClaimsConsole
             int claimIdAsInt = Convert.ToInt32(claimIdAsString);
             newClaimAdded.ClaimID = claimIdAsInt;
             Console.WriteLine("Enter the claim type");
-            newClaimAdded.ClaimType = 
+            string claimTypeAsString = Console.ReadLine();
+            int claimTypeAsInt = Convert.ToInt32(claimTypeAsString);
+            newClaimAdded.ClaimType = (ClaimType)claimTypeAsInt;
+            Console.WriteLine("Enter a claim description");
+            newClaimAdded.Description = Console.ReadLine();
+            Console.WriteLine("Amount of Damage");
+            newClaimAdded.ClaimAmount = Convert.ToDouble(Console.ReadLine());
+            Console.WriteLine("Date of accident");
+            newClaimAdded.DateOfIncident = 
         }
     }
 }
