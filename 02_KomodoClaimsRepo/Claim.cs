@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace _02_KomodoClaimsRepo
 
 { 
-    public enum ClaimType { Car, Home, Theft}
+    public enum ClaimType { Car=1, Home, Theft}
     public class Claim
     {
         public int ClaimID { get; set; }
