@@ -95,7 +95,7 @@ namespace _02_KomodoClaimsConsole
             string claimIdAsString = Console.ReadLine();
             int claimIdAsInt = Convert.ToInt32(claimIdAsString);
             newClaimAdded.ClaimID = claimIdAsInt;
-            Console.WriteLine("Enter the claim type");
+            Console.WriteLine("Enter the claim type (Car = 1 etc.)");
             string claimTypeAsString = Console.ReadLine();
             int claimTypeAsInt = Convert.ToInt32(claimTypeAsString);
             newClaimAdded.ClaimType = (ClaimType)claimTypeAsInt;
@@ -131,9 +131,9 @@ namespace _02_KomodoClaimsConsole
 
         private void SeedClaimList()
         {
-            Claim a = new Claim(1, ClaimType.Car, "Car accident on 465", 400.00d, new DateTime(25 / 04 / 2018), new DateTime(27 / 04 / 2018), true);
-            Claim b = new Claim(2, ClaimType.Home, "House fire in kitchen", 40000.00d, new DateTime(11 / 04 / 2018), new DateTime(12 / 04 / 2018), true);
-            Claim c = new Claim(3, ClaimType.Theft, "Stolen pancakes", 4.00d, new DateTime(27 / 04 / 2018), new DateTime(01 / 06 / 2018), false);
+            Claim a = new Claim(1, ClaimType.Car, "Car accident on 465", 400.00d, new DateTime(2018, 4, 25), new DateTime(2018, 4, 27), true);
+            Claim b = new Claim(2, ClaimType.Home, "House fire in kitchen", 40000.00d, new DateTime(2018, 4, 11), new DateTime(2018, 4, 12), true);
+            Claim c = new Claim(3, ClaimType.Theft, "Stolen pancakes", 4.00d,new DateTime(2018, 4, 27), new DateTime(2018, 6, 1), false);
 
             _repo.AddNextClaim(a);
             _repo.AddNextClaim(b);
