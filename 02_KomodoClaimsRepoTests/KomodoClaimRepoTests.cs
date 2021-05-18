@@ -13,10 +13,8 @@ namespace _02_KomodoClaimsRepoTests
         {
             Claim claim = new Claim();
             ClaimRepository repository = new ClaimRepository();
-            repository.GetAllClaims();
-            Queue<Claim> directory = repository.GetAllClaims();
-            bool directoryHasLists = directory.Contains(claim);
-            Assert.IsTrue(directoryHasLists);
+            bool result = repository.AddNextClaim(claim);
+            Assert.IsTrue(result);
         }
 
         private Claim _claim;
@@ -26,7 +24,7 @@ namespace _02_KomodoClaimsRepoTests
         public void Arrange()
         {
             _repo = new ClaimRepository();
-            _claim = new Claim(4, ClaimType.Car, "Wreck on i-70", 20000.00d, new DateTime(2018, 4, 28), new DateTime(2018, 4, 28), true);
+            _claim = new Claim(4, ClaimType.Car, "Wreck on i-70", 20000.00d, new DateTime(2018, 4, 27), new DateTime(2018, 4, 28), true);
             _repo.AddNextClaim(_claim);
         }
 
