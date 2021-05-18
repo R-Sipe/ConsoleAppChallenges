@@ -8,7 +8,8 @@ namespace _03_KomodoBadgeRepo
 {
     public class BadgeRepository // Key value pairs for dictionary
     {
-        private readonly Dictionary<int, List<Door>> _badgeDirectory = new Dictionary<int, List<Door>>();
+        private readonly Dictionary<int, List<Door>> _badgeDirectory = new Dictionary<int, List<Door>>(); //
+        
 
         public Dictionary<int, List<Door>> ViewAllBadges()
         {
@@ -20,7 +21,20 @@ namespace _03_KomodoBadgeRepo
             _badgeDirectory.Add(key, value);
         }
 
-        public bool UpdateExistingBadge()
+        public void AddDoorToBadge(int badgeID,Door doorToAdd)
+        {
+            //List<Door> doors = GetListOfDoor(badgeID);  hard way 
+            //doors.Add(doorToAdd);
+            foreach(KeyValuePair<int, List<Door>> existingDoors in _badgeDirectory)
+            {
+                if(existingDoors.Key == badgeID)
+                {
+                    existingDoors.Value.Add(doorToAdd);
+                }
+            }
+        }
+
+        public bool RemoveDoorFromBadge()
         {
 
         }
@@ -28,6 +42,18 @@ namespace _03_KomodoBadgeRepo
         public bool DeleteExistingBadge()
         {
 
+        }
+
+        public List<Door> GetListOfDoor(int badgeID)
+        {
+            foreach(KeyValuePair<int, List<Door>> doors in _badgeDirectory)
+            {
+                if(doors.Key == badgeID)
+                {
+                    return doors.Value;
+                }
+            }
+            return null;
         }
     }
 }
