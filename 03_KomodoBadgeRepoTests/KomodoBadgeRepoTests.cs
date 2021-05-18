@@ -4,7 +4,7 @@ using System;
 namespace _03_KomodoBadgeRepoTests
 {
     [TestClass]
-    public class UnitTest1
+    public class KomodoBadgeRepoTests
     {
         [TestMethod]
         public void TestMethod1()
