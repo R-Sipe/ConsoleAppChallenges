@@ -12,6 +12,7 @@ namespace _02_KomodoClaimsConsole
         private ClaimRepository _repo = new ClaimRepository();
         public void Run()
         {
+            SeedClaimList();
             Menu();
         }
         private void Menu()
@@ -52,7 +53,7 @@ namespace _02_KomodoClaimsConsole
         {
             Console.Clear();
             Queue<Claim> allClaims = _repo.GetAllClaims();
-            foreach(Claim claim in allClaims)
+            foreach (Claim claim in allClaims)
             {
                 Console.WriteLine($"Claim ID: {claim.ClaimID}\n" +
                     $"Claim Type: {claim.ClaimType}\n" +
@@ -65,7 +66,13 @@ namespace _02_KomodoClaimsConsole
 
         private void ViewNextClaim()
         {
-            _repo.GetNextClaim();
+            Claim nextClaim = _repo.GetNextClaim();
+            Console.WriteLine($"Claim ID: {nextClaim.ClaimID}\n" +
+                    $"Claim Type: {nextClaim.ClaimType}\n" +
+                    $"Description: {nextClaim.Description}\n" +
+                    $"Date of Incident: {nextClaim.DateOfIncident}\n" +
+                    $"Date of Claim: {nextClaim.DateOfClaim}\n" +
+                    $"Is Valid: {nextClaim.IsValid}");
             Console.WriteLine("Do you want to deal with this claim now?(y/n)");
             string input = (Console.ReadLine().ToLower());
             switch (input)
@@ -76,7 +83,7 @@ namespace _02_KomodoClaimsConsole
                     break;
                 case "n":
                     Console.WriteLine("Claim was added back into queue");
-                    break;  
+                    break;
             }
         }
 
@@ -97,7 +104,40 @@ namespace _02_KomodoClaimsConsole
             Console.WriteLine("Amount of Damage");
             newClaimAdded.ClaimAmount = Convert.ToDouble(Console.ReadLine());
             Console.WriteLine("Date of accident");
-            newClaimAdded.DateOfIncident = 
+            newClaimAdded.DateOfIncident = DateTime.Parse(Console.ReadLine());
+            Console.WriteLine("Date of Claim");
+            newClaimAdded.DateOfClaim = DateTime.Parse(Console.ReadLine());
+            newClaimAdded.IsValid = IsClaimValid(newClaimAdded.DateOfClaim, newClaimAdded.DateOfIncident); // passing in
+            _repo.AddNextClaim(newClaimAdded);
+        }
+
+
+
+        //helper methods
+        private bool IsClaimValid(DateTime dateOfClaim, DateTime dateOfIncident) // returns something
+        {
+            TimeSpan timeSpan = dateOfClaim - dateOfIncident;
+            {
+                if (timeSpan.TotalDays > 30)
+                {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+            }
+        }
+
+        private void SeedClaimList()
+        {
+            Claim a = new Claim(1, ClaimType.Car, "Car accident on 465", 400.00d, new DateTime(25 / 04 / 2018), new DateTime(27 / 04 / 2018), true);
+            Claim b = new Claim(2, ClaimType.Home, "House fire in kitchen", 40000.00d, new DateTime(11 / 04 / 2018), new DateTime(12 / 04 / 2018), true);
+            Claim c = new Claim(3, ClaimType.Theft, "Stolen pancakes", 4.00d, new DateTime(27 / 04 / 2018), new DateTime(01 / 06 / 2018), false);
+
+            _repo.AddNextClaim(a);
+            _repo.AddNextClaim(b);
+            _repo.AddNextClaim(c);
         }
     }
 }

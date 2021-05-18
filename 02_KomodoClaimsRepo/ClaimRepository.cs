@@ -36,5 +36,6 @@ namespace _02_KomodoClaimsRepo
             bool addedClaim = (_claimDirectory.Count > startingCount) ? true : false;
             return addedClaim;
         }
+
     }
 }
