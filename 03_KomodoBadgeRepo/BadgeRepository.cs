@@ -49,7 +49,7 @@ namespace _03_KomodoBadgeRepo
         {
             _badgeDirectory.Remove(badgeID);
         }
-
+        //helper method
         public List<Door> GetListOfDoor(int badgeID)
         {
             foreach(KeyValuePair<int, List<Door>> doors in _badgeDirectory)
