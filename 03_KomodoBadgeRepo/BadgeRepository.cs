@@ -34,14 +34,20 @@ namespace _03_KomodoBadgeRepo
             }
         }
 
-        public bool RemoveDoorFromBadge()
+        public void RemoveDoorFromBadge(int badgeID, Door doorToRemove)
         {
-
+            foreach(KeyValuePair<int, List<Door>> moreDoors in _badgeDirectory)
+            {
+                if(moreDoors.Key == badgeID)
+                {
+                    moreDoors.Value.Remove(doorToRemove);
+                }
+            }
         }
 
-        public bool DeleteExistingBadge()
+        public void DeleteExistingBadge(int badgeID, List<Door> doors)
         {
-
+            _badgeDirectory.Remove(badgeID);
         }
 
         public List<Door> GetListOfDoor(int badgeID)
