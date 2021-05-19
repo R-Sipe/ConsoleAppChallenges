@@ -12,7 +12,7 @@ namespace _03_KomodoBadgeConsole
         private BadgeRepository _repo = new BadgeRepository();
         public void Run()
         {
-            //SeedBadgeList();
+            SeedBadgeList();
             Menu();
         }
         private void Menu()
@@ -85,6 +85,45 @@ namespace _03_KomodoBadgeConsole
         private void EditABadge()
         {
             Console.Clear();
+            Badge editBadge = new Badge();
+            Console.WriteLine("What is the badge you want to edit?:");
+            string badgeAsString = Console.ReadLine();
+            int badgeAsInt = Convert.ToInt32(badgeAsString);
+            editBadge.BadgeID = badgeAsInt;
+            Dictionary<int, List<Door>> userBadge = _repo.ViewAllBadges();
+            foreach (KeyValuePair<int, List<Door>> badge in userBadge)
+            {
+                if (badge.Key == editBadge.BadgeID)
+                {
+                    Console.WriteLine($"{badge.Key} has acces to doors");
+                    foreach (Door door in badge.Value)
+                    {
+                        Console.WriteLine(door.DoorName);
+                    }
+
+                    Console.WriteLine("What would you like to do?\n" +
+                        "1. Remove Door\n" +
+                        "2. Add Door");
+                    int userInput = Convert.ToInt32(Console.ReadLine());
+                    if (userInput == 1)
+                    {
+                        Console.WriteLine("which door do you want to remove?");
+                        string doorAsString = Console.ReadLine();
+                        Door door = new Door(doorAsString);
+                        _repo.RemoveDoorFromBadge(badgeAsInt, door);
+                        Console.WriteLine("Door was removed");
+                    }
+                    if (userInput == 2)
+                    {
+                        Console.WriteLine("Which door do you want to add?");
+                        string doorAsString = Console.ReadLine();
+                        Door door = new Door(doorAsString);
+                        _repo.AddDoorToBadge(badgeAsInt, door);
+                        Console.WriteLine("Door was added");
+                    }
+                }
+                Console.WriteLine("User input not recognized");
+            }
 
         }
 
@@ -95,8 +134,25 @@ namespace _03_KomodoBadgeConsole
             foreach (KeyValuePair<int, List<Door>> badge in allBadges)
             {
                 Console.WriteLine($"Badge #: {badge.Key}\n" +
-                    $"Door Access: {badge.Value}");
+                    $"Door Access:");
+                foreach (Door door in badge.Value)
+                {
+                    Console.WriteLine(door.DoorName);
+                }
             }
+        }
+
+        private void SeedBadgeList()
+        {
+            _repo.AddNewBadge(123, new List<Door> { new Door("A1")});
+            Door lab = new Door("A2");
+            Door office = new Door("A3");
+            Door entrance = new Door("A4");
+           
+            _repo.AddDoorToBadge(123, lab);
+            _repo.AddDoorToBadge(123, office);
+            _repo.AddDoorToBadge(123, entrance);
+
         }
     }
 }
