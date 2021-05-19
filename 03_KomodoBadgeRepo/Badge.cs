@@ -21,5 +21,10 @@ namespace _03_KomodoBadgeRepo
     public class Door
     {
         public string DoorName { get; set; }
+
+        public Door(string doorName)
+        {
+            DoorName = doorName;
+        }
     }
 }

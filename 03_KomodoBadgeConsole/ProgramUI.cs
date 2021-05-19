@@ -53,14 +53,38 @@ namespace _03_KomodoBadgeConsole
         {
             Console.Clear();
             Badge addNewBadge = new Badge();
-            Console.WriteLine("What is the badge numnber?");
+            Console.WriteLine("What is the badge number:");
             string badgeAsString = Console.ReadLine();
             int badgeAsInt = Convert.ToInt32(badgeAsString);
             addNewBadge.BadgeID = badgeAsInt;
+            Console.WriteLine("List a door that it needs access to:");
+            //addNewBadge.DoorNames = Door(Console.ReadLine());
+            List<Door> newAccess = new List<Door>();
+            bool keepLooping = true;
+            while (keepLooping)
+            {
+                string newDoorName = Console.ReadLine();
+                Door newDoor = new Door(newDoorName);
+                newAccess.Add(newDoor);
+                Console.WriteLine("Do you want to add more doors?");
+                string userChoice = Console.ReadLine();
+                if (userChoice.ToLower() == "yes")
+                {
+                    Console.WriteLine("List of another door to access");
+                    keepLooping = true;
+                }
+                else
+                {
+                    keepLooping = false;
+                }
+            }
+            addNewBadge.DoorNames = newAccess;
+            _repo.AddNewBadge(addNewBadge.BadgeID, addNewBadge.DoorNames);
         }
 
         private void EditABadge()
         {
+            Console.Clear();
 
         }
 
