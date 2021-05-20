@@ -123,7 +123,8 @@ namespace _03_KomodoBadgeConsole
                     }
                 }
             }
-            Console.WriteLine("User input not recognized"); // issue with showing input not recognized even though it is working
+            
+            //Console.WriteLine("User input not recognized");  issue with showing input not recognized even though it is working
         }
 
         private void ListAllBadges()
