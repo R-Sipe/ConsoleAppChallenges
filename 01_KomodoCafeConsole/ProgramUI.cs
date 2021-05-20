@@ -198,7 +198,12 @@ namespace _01_KomodoCafeChallengeConsole
                     $"Meal Name: {displayMenu.MealName}\n" +
                     $"Meal Description: {displayMenu.MealDescription}\n" +
                     $"Meal Price: {displayMenu.MealPrice}\n" +
-                    $"Ingredient List: {displayMenu.IngredientList}");
+                    $"Ingredients:");
+
+                foreach (string ingredient in displayMenu.IngredientList)
+                {
+                    Console.WriteLine($" {ingredient} ");
+                }
             }
             else
             {
