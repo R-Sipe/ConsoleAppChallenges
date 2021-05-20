@@ -46,8 +46,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="KomodoCafe.cs" />
-    <Compile Include="KomodoCafeRepository.cs" />
+    <Compile Include="MenuItem.cs" />
+    <Compile Include="MenuItemRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

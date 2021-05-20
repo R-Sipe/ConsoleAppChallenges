@@ -9,9 +9,10 @@ namespace _01_KomodoCafeChallengeConsole
 {
     public class ProgramUI
     {
-        private KomodoCafeRepository _repo = new KomodoCafeRepository();
+        private MenuItemRepository _repo = new MenuItemRepository();
         public void Run()
         {
+            SeedMenuList();
             Menu();
         }
 
@@ -63,18 +64,19 @@ namespace _01_KomodoCafeChallengeConsole
         private void CreateNewMenuItems()
         {
             Console.Clear();
-            KomodoCafe newMenuItem = new KomodoCafe();
+            MenuItem newMenuItem = new MenuItem();
+            var ingredientList = new List<string>();
 
             Console.WriteLine("What is the new menu item?");
-            newMenuItem.MealName =  Console.ReadLine();
+            newMenuItem.MealName = Console.ReadLine();
             Console.WriteLine("What is the description of this item?");
             newMenuItem.MealDescription = Console.ReadLine();
             Console.WriteLine("What is the price of this item?");
-            newMenuItem.MealPrice = Convert.ToDouble(Console.ReadLine());
+            newMenuItem.MealPrice = Convert.ToDecimal(Console.ReadLine());
             //string mealPriceAsString = Console.ReadLine();
             //double mealPriceAsDoulbe = Convert.ToDouble(mealPriceAsString);
             //newMenuItem.MealPrice = mealPriceAsDoulbe;
-            Console.WriteLine("What is the main ingredient of this new item?\n" +
+            Console.WriteLine("Enter ingredients of the item?(Enter 'stop' to quit)\n" +
                 "1. Bun\n" +
                 "2. Lettuce\n" +
                 "3. Meat\n" +
@@ -82,75 +84,97 @@ namespace _01_KomodoCafeChallengeConsole
                 "5. Tomato\n" +
                 "6. Ketchup\n" +
                 "7. Mayo");
-            string ingredientAsString = Console.ReadLine();
-            int ingredientAsInt = Convert.ToInt32(ingredientAsString);
-            newMenuItem.IngredientList = (IngredientList)ingredientAsInt;
-            bool wasAddedCorrectly = _repo.AddItemsToMenu(newMenuItem);
-            if (wasAddedCorrectly)
+            string ingredient = Console.ReadLine();
+            while (ingredient != "stop")
             {
-                Console.WriteLine("The item was added correctly");
-            }else
-            {
-                Console.WriteLine("Item was not added, try again");
+                Console.Write("Ingredient Name: ");
+                string input = Console.ReadLine();
+                newMenuItem.IngredientList.Add(input);
             }
+            _repo.AddItemsToMenu(newMenuItem);
         }
 
         private void ViewAllMenuItems()
         {
             Console.Clear();
-            List<KomodoCafe> fullMenu = _repo.GetMenu();
-            foreach(KomodoCafe menu in fullMenu)
+            List<MenuItem> fullMenu = _repo.GetAllMenuItems();
+            foreach (MenuItem menu in fullMenu)
             {
-                Console.WriteLine($"Meal Number: {menu.MealNumber}\n" +
+                Console.Write($"Meal Number: {menu.MealNumber}\n" +
                     $"Meal Name: {menu.MealName}\n" +
                     $"Meal Description: {menu.MealDescription}\n" +
                     $"Meal Price: {menu.MealPrice}\n" +
-                    $"Ingredient List: {menu.IngredientList}");
+                    $"Ingredients: ");
+
+                foreach (string ingredient in menu.IngredientList)
+                {
+                    Console.Write($" {ingredient}");
+                }
+                Console.WriteLine();
             }
         }
 
         private void UpdateMenuItems()
         {
             Console.Clear();
-            Console.WriteLine("Enter the menu item you want to update");
-            string oldItem = Console.ReadLine();
-            KomodoCafe newItems = new KomodoCafe();
-            Console.WriteLine("What is the menu number?");
-            string menuNumberAsString = Console.ReadLine();
-            int menuNumberAsInt = Convert.ToInt32(menuNumberAsString);
-            newItems.MealNumber = menuNumberAsInt;
+
+            Console.WriteLine("Enter the number of the menu item you wish to update");
+            int oldItem = Convert.ToInt32(Console.ReadLine());
+            
+            MenuItem mealToUpdate = _repo.GetMenuItemByNumber(oldItem);
+
+            Console.Write("Add a new meal number: ");
+            int menuNumber = Convert.ToInt32(Console.ReadLine());
+            mealToUpdate.MealNumber = menuNumber;
 
             Console.WriteLine("What is the new menu item name?");
-            newItems.MealName = Console.ReadLine();
+            mealToUpdate.MealName = Console.ReadLine();
 
             Console.WriteLine("Enter the new description");
-            newItems.MealDescription = Console.ReadLine();
+            mealToUpdate.MealDescription = Console.ReadLine();
 
             Console.WriteLine("Enter the new price");
-            string menuPriceAsString = Console.ReadLine();
-            double menuPriceAsDouble = Convert.ToDouble(menuPriceAsString);
-            newItems.MealPrice = menuPriceAsDouble;
+            string newPriceInput = Console.ReadLine();
+            decimal newPrice = Convert.ToDecimal(newPriceInput);
+            mealToUpdate.MealPrice = newPrice;
 
-            Console.WriteLine("Enter the new ingredients\n" +
-                "1. Bun\n" +
-                "2. Lettuce\n" +
-                "3. Meat\n" +
-                "4. Pickle\n" +
-                "5. Tomato\n" +
-                "6. Ketchup\n" +
-                "7. Mayo");
-            string ingredientsAsString = Console.ReadLine();
-            int ingredientsAsInt = Convert.ToInt32(ingredientsAsString);
-            newItems.IngredientList = (IngredientList)ingredientsAsInt;
-            _repo.DeleteExistingMenuItems(oldItem);
-            _repo.AddItemsToMenu(newItems);
+            List<string> listOfIngredients = new List<string>();
+            Console.WriteLine("Enter a new list of ingredients: ");
+            string newIngredientsInput = Console.ReadLine();
+
+                while (newIngredientsInput != "stop")
+                {
+                    listOfIngredients.Add(newIngredientsInput);
+                break;
+                }
+            
+            _repo.UpdateExistingMenuItems(newIngredientsInput, mealToUpdate);
+
+
+            mealToUpdate.IngredientList = listOfIngredients;
+
+
+            Console.WriteLine($"Updated {oldItem} to:" +
+                $"\n#: {mealToUpdate.MealNumber}" +
+                $"\nName: {mealToUpdate.MealName}" +
+                $"\nDescription: {mealToUpdate.MealDescription}" +
+                $"\nPrice: {mealToUpdate.MealPrice}" +
+                $"\nIngredients:");
+
+            foreach (string ingredient in mealToUpdate.IngredientList)
+            {
+                Console.WriteLine($" {ingredient} ");
+            }
+
+            //Console.Write($"{mealToUpdate.MealPrice}");
+
         }
 
         private void DeleteMenuItems()
         {
             Console.Clear();
-            KomodoCafe deleteMenuItem = new KomodoCafe();
-            Console.WriteLine("What item do you want to delete?");
+            MenuItem deleteMenuItem = new MenuItem();
+            Console.WriteLine("What item (input name) do you want to delete?");
             bool wasDeleted = _repo.DeleteExistingMenuItems(Console.ReadLine());
             if (wasDeleted)
             {
@@ -167,8 +191,8 @@ namespace _01_KomodoCafeChallengeConsole
         {
             Console.Clear();
             Console.WriteLine("What menu item do you want to see?");
-            KomodoCafe displayMenu = _repo.GetMenuByName(Console.ReadLine());
-            if(displayMenu != null)
+            MenuItem displayMenu = _repo.GetMenuByName(Console.ReadLine());
+            if (displayMenu != null)
             {
                 Console.WriteLine($"Meal Number: {displayMenu.MealNumber}\n" +
                     $"Meal Name: {displayMenu.MealName}\n" +
@@ -180,6 +204,19 @@ namespace _01_KomodoCafeChallengeConsole
             {
                 Console.WriteLine("There isnt a menu item by that name");
             }
+        }
+
+        private void SeedMenuList()
+        {
+            MenuItem itemOne = new MenuItem(1, "burgers", "juicy burgers nice", 3.15M, new List<string> { "bun, lettuce, tomato, cheese, ketchup" });
+            MenuItem itemTwo = new MenuItem(2, "Tacos", "Shrimp Tacos with onions and garlic garnish", 5.15M, new List<string> { "Tortilla, cheese, onion, lettuce, garlic, shrimp" });
+            MenuItem itemThree = new MenuItem(3, "Chicken Nuggies", "Chicken nuggies for the lil' eaters", 3.05M, new List<string> { "Chicken, fries, ketchup/honey mustard" });
+            MenuItem itemFour = new MenuItem(4, " Ceaser Salad", "A block of lettuce with chicken and ceaser dressing", 6.25M, new List<string> { "lettuce, dressing(ceaser), croutons, chicken" });
+            
+            _repo.AddItemsToMenu(itemOne);
+            _repo.AddItemsToMenu(itemTwo);
+            _repo.AddItemsToMenu(itemThree);
+            _repo.AddItemsToMenu(itemFour);
         }
     }
 }

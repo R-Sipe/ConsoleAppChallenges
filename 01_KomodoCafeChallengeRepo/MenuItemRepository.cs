@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace _01_KomodoCafeChallengeRepo
 {
-    public class KomodoCafeRepository
+    public class MenuItemRepository
     {
-        private readonly List<KomodoCafe> _cafeDirectory = new List<KomodoCafe>();
+        private readonly List<MenuItem> _cafeDirectory = new List<MenuItem>();
 
-        public bool AddItemsToMenu(KomodoCafe newItems)
+        public bool AddItemsToMenu(MenuItem newItems)
         {
             int startingCount = _cafeDirectory.Count;
             _cafeDirectory.Add(newItems);
@@ -19,26 +19,38 @@ namespace _01_KomodoCafeChallengeRepo
             return isAdded;
         }
 
-        public List<KomodoCafe> GetMenu()
+        public List<MenuItem> GetAllMenuItems()
         {
             return _cafeDirectory;
         }
 
-        public KomodoCafe GetMenuByName(string name)
+        public MenuItem GetMenuByName(string name)
         {
-            foreach (KomodoCafe item in _cafeDirectory)
+            foreach (MenuItem item in _cafeDirectory)
             {
                 if (item.MealName.ToLower() == name.ToLower())
                 {
-                    return (KomodoCafe)item;
+                    return (MenuItem)item;
                 }
             }
             return null;
         }
 
-        public bool UpdateExistingMenuItems(string originalItem, KomodoCafe newMenuItems)
+        public MenuItem GetMenuItemByNumber(int id)
         {
-            KomodoCafe oldMenuItems = GetMenuByName(originalItem);
+            foreach (MenuItem item in _cafeDirectory)
+            {
+                if (item.MealNumber == id)
+                {
+                    return item;
+                }
+            }
+            return null;
+        }
+
+        public bool UpdateExistingMenuItems(string originalItem, MenuItem newMenuItems)
+        {
+            MenuItem oldMenuItems = GetMenuByName(originalItem);
             if (oldMenuItems != null)
             {
                 oldMenuItems.MealNumber = newMenuItems.MealNumber;
@@ -56,7 +68,7 @@ namespace _01_KomodoCafeChallengeRepo
 
         public bool DeleteExistingMenuItems(string name)
         {
-            KomodoCafe menuItemsToDelete = GetMenuByName(name);
+            MenuItem menuItemsToDelete = GetMenuByName(name);
             if(menuItemsToDelete == null)
             {
                 return false;

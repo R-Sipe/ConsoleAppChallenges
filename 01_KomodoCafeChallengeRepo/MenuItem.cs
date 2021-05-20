@@ -6,19 +6,19 @@ using System.Threading.Tasks;
 
 namespace _01_KomodoCafeChallengeRepo
 {
-    public enum IngredientList { Bun = 1, Lettuce, Meat, Pickle, Tomato, Ketchup, Mayo}
-    public class KomodoCafe
+    
+    public class MenuItem
     {
         public int MealNumber { get; set; }
         public string MealName { get; set; }
         public string MealDescription { get; set; }
-        public double MealPrice { get; set; }
-        public IngredientList IngredientList { get; set; }
+        public decimal MealPrice { get; set; }
+        public List<string> IngredientList { get; set; }
 
 
-        public KomodoCafe() { }
+        public MenuItem() { }
 
-        public KomodoCafe(int mealNumber, string mealName, string mealDescription, double mealPrice, IngredientList ingredientList)
+        public MenuItem(int mealNumber, string mealName, string mealDescription, decimal mealPrice, List<string> ingredientList)
         {
             MealNumber = mealNumber;
             MealName = mealName;

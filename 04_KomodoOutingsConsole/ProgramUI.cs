@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace _04_KomodoOutingsConsole
 {
-    class ProgramUI
+    public class ProgramUI
     {
         private OutingsRepository _repo = new OutingsRepository();
         public void Run()
