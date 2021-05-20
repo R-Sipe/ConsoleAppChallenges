@@ -133,7 +133,7 @@ namespace _03_KomodoBadgeConsole
             Dictionary<int, List<Door>> allBadges = _repo.ViewAllBadges();
             foreach (KeyValuePair<int, List<Door>> badge in allBadges)
             {
-                Console.WriteLine($"Badge #: {badge.Key}\n" +
+                Console.Write($"Badge #: {badge.Key}\n" +
                     $"Door Access:");
                 foreach (Door door in badge.Value)
                 {
