@@ -122,9 +122,8 @@ namespace _03_KomodoBadgeConsole
                         Console.WriteLine("Door was added");
                     }
                 }
-                Console.WriteLine("User input not recognized");
             }
-
+            Console.WriteLine("User input not recognized"); // issue with showing input not recognized even though it is working
         }
 
         private void ListAllBadges()
@@ -144,14 +143,19 @@ namespace _03_KomodoBadgeConsole
 
         private void SeedBadgeList()
         {
-            _repo.AddNewBadge(123, new List<Door> { new Door("A1")});
-            Door lab = new Door("A2");
-            Door office = new Door("A3");
-            Door entrance = new Door("A4");
-           
-            _repo.AddDoorToBadge(123, lab);
-            _repo.AddDoorToBadge(123, office);
-            _repo.AddDoorToBadge(123, entrance);
+            _repo.AddNewBadge(12345, new List<Door> { new Door("A7") });
+            _repo.AddNewBadge(22345, new List<Door> { new Door("A1, A4, B1, B2") });
+            _repo.AddNewBadge(32345, new List<Door> { new Door("A4, A5") });
+
+
+
+            //Door lab = new Door("A2");
+            //Door office = new Door("A3");
+            //Door entrance = new Door("A4");
+
+            //_repo.AddDoorToBadge(12345, lab);
+            //_repo.AddDoorToBadge(123, office);
+            //_repo.AddDoorToBadge(123, entrance);
 
         }
     }

@@ -55,11 +55,13 @@ namespace _03_KomodoBadgeRepoTests
             Assert.IsTrue(countAfter < countBefore);
         }
 
-        //[TestMethod]
-        //public void DeleteExistingBadge_ShouldReturnDeleted()
-        //{
-        //    bool wasDeleted = _repo.DeleteExistingBadge(_badge);
-        //    Assert.IsTrue(wasDeleted);
-        //}
+        [TestMethod]
+        public void DeleteExistingBadge_ShouldReturnDeleted()
+        {
+            int countBefore = _repository.ViewAllBadges().Count;
+            _repository.DeleteExistingBadge(123, new List<Door> { new Door("A1") });
+            int countAfter = _repository.ViewAllBadges().Count;
+            Assert.IsTrue(countAfter < countBefore);
+        }
     }
 }
