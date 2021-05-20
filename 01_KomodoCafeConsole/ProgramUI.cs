@@ -74,7 +74,7 @@ namespace _01_KomodoCafeChallengeConsole
             //string mealPriceAsString = Console.ReadLine();
             //double mealPriceAsDoulbe = Convert.ToDouble(mealPriceAsString);
             //newMenuItem.MealPrice = mealPriceAsDoulbe;
-            Console.WriteLine("What are the ingredients of this new item?\n" +
+            Console.WriteLine("What is the main ingredient of this new item?\n" +
                 "1. Bun\n" +
                 "2. Lettuce\n" +
                 "3. Meat\n" +

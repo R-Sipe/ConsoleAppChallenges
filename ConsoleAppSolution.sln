@@ -5,8 +5,6 @@ VisualStudioVersion = 16.0.31205.134
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01_KomodoCafeChallengeRepo", "01_KomodoCafeChallengeRepo\01_KomodoCafeChallengeRepo.csproj", "{C8827B27-C745-4F44-8D86-A39D5A668A97}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01_KomodoCafeChallengesTests", "KomodoCafeChallengesTests\01_KomodoCafeChallengesTests.csproj", "{DA1BFCCE-5AF3-45CA-A590-7B3613C7729B}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02_KomodoClaimsConsole", "02_KomodoClaimsConsole\02_KomodoClaimsConsole.csproj", "{5AF25075-364D-48C3-9D5F-DEA9BCA83960}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02_KomodoClaimsRepo", "02_KomodoClaimsRepo\02_KomodoClaimsRepo.csproj", "{95DAC2A8-FEF9-4759-93A3-3E4C9226EC9B}"
@@ -21,6 +19,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03_KomodoBadgeRepoTests", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01_KomodoCafeChallengeConsole", "01_KomodoCafeConsole\01_KomodoCafeChallengeConsole.csproj", "{278AF787-DCFA-4A1A-B8A2-3C451B8C48AC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01_KomodoCafeChallengesTests", "01_KomodoCafeChallengesTests\01_KomodoCafeChallengesTests.csproj", "{DA1BFCCE-5AF3-45CA-A590-7B3613C7729B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,10 +31,6 @@ Global
 		{C8827B27-C745-4F44-8D86-A39D5A668A97}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C8827B27-C745-4F44-8D86-A39D5A668A97}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C8827B27-C745-4F44-8D86-A39D5A668A97}.Release|Any CPU.Build.0 = Release|Any CPU
-		{DA1BFCCE-5AF3-45CA-A590-7B3613C7729B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DA1BFCCE-5AF3-45CA-A590-7B3613C7729B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DA1BFCCE-5AF3-45CA-A590-7B3613C7729B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DA1BFCCE-5AF3-45CA-A590-7B3613C7729B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{5AF25075-364D-48C3-9D5F-DEA9BCA83960}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{5AF25075-364D-48C3-9D5F-DEA9BCA83960}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5AF25075-364D-48C3-9D5F-DEA9BCA83960}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -63,6 +59,10 @@ Global
 		{278AF787-DCFA-4A1A-B8A2-3C451B8C48AC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{278AF787-DCFA-4A1A-B8A2-3C451B8C48AC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{278AF787-DCFA-4A1A-B8A2-3C451B8C48AC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DA1BFCCE-5AF3-45CA-A590-7B3613C7729B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA1BFCCE-5AF3-45CA-A590-7B3613C7729B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA1BFCCE-5AF3-45CA-A590-7B3613C7729B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA1BFCCE-5AF3-45CA-A590-7B3613C7729B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
