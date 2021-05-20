@@ -35,7 +35,7 @@ namespace KomodoCafeChallengesTests
         public void Arrange()
         {
             _repo = new MenuItemRepository();
-            _cafe = new MenuItem(1, "BurgerBuddy", "One Burger with another burger as its buddy.", 3.15, new List<string> { "Meat", "Bun", "Cheese slice" });
+            _cafe = new MenuItem(1, "BurgerBuddy", "One Burger with another burger as its buddy.", 3.15M, new List<string> { "Meat", "Bun", "Cheese slice" });
             _repo.AddItemsToMenu(_cafe);
         }
 
@@ -49,7 +49,7 @@ namespace KomodoCafeChallengesTests
         [TestMethod]
         public void UpdateExistingMenuItems_ShouldShowUpdate()
         {
-            _repo.UpdateExistingMenuItems("BurgerBuddy", new MenuItem(1, "BurgerHelper", "A burger who has a helper of lettuce", 3.25, new List<string> { "Meat", "Bun", "Cheese slice"}));
+            _repo.UpdateExistingMenuItems("BurgerBuddy", new MenuItem(1, "BurgerHelper", "A burger who has a helper of lettuce", 3.25M, new List<string> { "Meat", "Bun", "Cheese slice"}));
             Assert.AreEqual(_cafe.MealName, "BurgerHelper");
         }
 
