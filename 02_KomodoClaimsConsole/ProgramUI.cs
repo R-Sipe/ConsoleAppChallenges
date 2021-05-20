@@ -95,7 +95,7 @@ namespace _02_KomodoClaimsConsole
             string claimIdAsString = Console.ReadLine();
             int claimIdAsInt = Convert.ToInt32(claimIdAsString);
             newClaimAdded.ClaimID = claimIdAsInt;
-            Console.WriteLine("Enter the claim type (Car = 1 etc.)");
+            Console.WriteLine("Enter the claim type (Car = 1, Home = 2, Theft = 3)");
             string claimTypeAsString = Console.ReadLine();
             int claimTypeAsInt = Convert.ToInt32(claimTypeAsString);
             newClaimAdded.ClaimType = (ClaimType)claimTypeAsInt;
