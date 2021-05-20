@@ -26,5 +26,7 @@ namespace _01_KomodoCafeChallengeRepo
             MealPrice = mealPrice;
             IngredientList = ingredientList;
         }
+
+       
     }
 }

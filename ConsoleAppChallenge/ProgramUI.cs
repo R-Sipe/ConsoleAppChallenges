@@ -25,7 +25,7 @@ namespace _01_KomodoCafeChallengeConsole
                     "2. View All Menu Items\n" +
                     "3. Update Menu Items\n" +
                     "4. Delete Menu Items\n" +
-                    "View Menu Items By Name");
+                    "5. View Menu Items By Name");
 
                 string userInput = Console.ReadLine();
 
@@ -103,7 +103,9 @@ namespace _01_KomodoCafeChallengeConsole
             {
                 Console.WriteLine($"Meal Number: {menu.MealNumber}\n" +
                     $"Meal Name: {menu.MealName}\n" +
-                    $"Meal Description: {menu.MealDescription}");
+                    $"Meal Description: {menu.MealDescription}\n" +
+                    $"Meal Price: {menu.MealPrice}\n" +
+                    $"Ingredient List: {menu.IngredientList}");
             }
         }
 
@@ -140,6 +142,8 @@ namespace _01_KomodoCafeChallengeConsole
             string ingredientsAsString = Console.ReadLine();
             int ingredientsAsInt = Convert.ToInt32(ingredientsAsString);
             newItems.IngredientList = (IngredientList)ingredientsAsInt;
+            _repo.DeleteExistingMenuItems(oldItem);
+            _repo.AddItemsToMenu(newItems);
         }
 
         private void DeleteMenuItems()
