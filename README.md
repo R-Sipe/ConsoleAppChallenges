@@ -9,7 +9,7 @@ These challenges are our final project for out gold badge, one is a cafe which a
 
 ## Installation
 
-Click the greed code button on the top right side and select either clone or download to zip file. Use this project in Visual Studio Community, as it was created in and ran in.
+Click the green code button on the top right side and select either clone or download to zip file. Use this project in Visual Studio Community, as it was created in and ran in.
 
 ## How-To Use
 
