@@ -107,15 +107,15 @@ namespace _03_KomodoBadgeConsole
                     int userInput = Convert.ToInt32(Console.ReadLine());
                     if (userInput == 1)
                     {
-                        Console.WriteLine("which door do you want to remove?");
+                        Console.WriteLine("which door do you want to remove? (Use Capitalization)");
                         string doorAsString = Console.ReadLine();
                         Door door = new Door(doorAsString);
-                        _repo.RemoveDoorFromBadge(badgeAsInt, door);
+                        _repo.RemoveDoorFromBadge(badgeAsInt, door); // Cannot remove door from seed list
                         Console.WriteLine("Door was removed");
                     }
                     if (userInput == 2)
                     {
-                        Console.WriteLine("Which door do you want to add?");
+                        Console.WriteLine("Which door do you want to add?(Use capitalization)");
                         string doorAsString = Console.ReadLine();
                         Door door = new Door(doorAsString);
                         _repo.AddDoorToBadge(badgeAsInt, door);
@@ -134,7 +134,7 @@ namespace _03_KomodoBadgeConsole
             foreach (KeyValuePair<int, List<Door>> badge in allBadges)
             {
                 Console.Write($"Badge #: {badge.Key}\n" +
-                    $"Door Access:");
+                    $"Door Access: ");
                 foreach (Door door in badge.Value)
                 {
                     Console.WriteLine(door.DoorName);
@@ -144,9 +144,9 @@ namespace _03_KomodoBadgeConsole
 
         private void SeedBadgeList()
         {
-            _repo.AddNewBadge(12345, new List<Door> { new Door("A7") });
-            _repo.AddNewBadge(22345, new List<Door> { new Door("A1, A4, B1, B2") });
-            _repo.AddNewBadge(32345, new List<Door> { new Door("A4, A5") });
+            _repo.AddNewBadge(12345, new List<Door> { new Door("A7"), new Door("A8"), new Door("A6") });
+            _repo.AddNewBadge(22345, new List<Door> { new Door("A1"), new Door("A4"), new Door("B1"), new Door("B2") });
+            _repo.AddNewBadge(32345, new List<Door> { new Door("A4"), new Door("A5") });
 
 
 
